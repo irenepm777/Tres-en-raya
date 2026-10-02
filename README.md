@@ -28,13 +28,13 @@ Gestiona el estado del tablero y las reglas relacionadas con las posiciones.
 
 Sus principales responsabilidades son:
 
-* colocar una ficha en una posición válida;
-* impedir que se sobrescriban casillas ocupadas;
-* comprobar si el tablero está lleno;
-* detectar victorias horizontales;
-* detectar victorias verticales;
-* detectar victorias en ambas diagonales;
-* representar gráficamente el estado del tablero mediante `toString()`.
+* colocar una ficha en una posición válida
+* impedir que se sobrescriban casillas ocupadas
+* comprobar si el tablero está lleno
+* detectar victorias horizontales
+* detectar victorias verticales
+* detectar victorias en ambas diagonales
+* representar gráficamente el estado del tablero mediante `toString()`
 
 La comprobación de las distintas líneas se centraliza en un método auxiliar para evitar repetir lógica.
 
@@ -46,14 +46,14 @@ Controla el desarrollo de una partida.
 
 Se encarga de:
 
-* mantener el tablero;
-* controlar el turno actual;
-* solicitar una jugada al tablero;
-* cambiar de turno únicamente cuando la jugada es válida;
-* comprobar si la partida ha terminado;
-* determinar la ficha ganadora;
-* detectar un empate;
-* mostrar el estado actual de la partida.
+* mantener el tablero
+* controlar el turno actual
+* solicitar una jugada al tablero
+* cambiar de turno únicamente cuando la jugada es válida
+* comprobar si la partida ha terminado
+* determinar la ficha ganadora
+* detectar un empate
+* mostrar el estado actual de la partida
 
 ---
 
@@ -121,16 +121,16 @@ Empate
 
 Una ficha gana cuando completa una línea en cualquiera de estas direcciones:
 
-* horizontal;
-* vertical;
-* diagonal directa;
-* diagonal indirecta.
+* horizontal
+* vertical
+* diagonal directa
+* diagonal indirecta
 
 Una jugada no se realiza si:
 
-* la fila o columna está fuera del tablero;
-* la casilla seleccionada ya está ocupada;
-* la partida ya ha terminado.
+* la fila o columna está fuera del tablero
+* la casilla seleccionada ya está ocupada
+* la partida ya ha terminado
 
 El turno solo cambia después de una jugada válida.
 

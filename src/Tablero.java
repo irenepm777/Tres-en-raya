@@ -3,10 +3,11 @@ public class Tablero {
     private Ficha[][] tablero;
 
     public Tablero(int dimension) {
-        tablero = new Ficha[dimension][dimension];
+        tablero = new Ficha[dimension][dimension]; // Obliga a la matriz a ser cuadrada
     }
 
 
+    // Indica si la jugada se puede hacer (lo indicado en Partida.java)
     public boolean jugar(Ficha ficha, int fila, int columna) {
 
         if (!posicionValida(fila, columna)) {
@@ -18,6 +19,7 @@ public class Tablero {
         }
 
         tablero[fila][columna] = ficha;
+        // Si la jugada es apta, esa posición es ocupada por la ficha de turno
 
         return true;
     }
@@ -34,13 +36,13 @@ public class Tablero {
 
     public boolean estaLleno() {
 
-        for (Ficha[] fila : tablero) {
+        for (Ficha[] fila : tablero) { // Primero recorre todas las filas del tablero
 
-            for (Ficha ficha : fila) {
+            for (Ficha ficha : fila) { // Después las fichas de esas filas
 
                 if (ficha == null) {
                     return false;
-                }
+                } // Si se encuentra algún null, significa que el tablero no está lleno
             }
         }
 
@@ -54,7 +56,7 @@ public class Tablero {
                 || ganaVertical(ficha)
                 || ganaDiagonalDirecta(ficha)
                 || ganaDiagonalIndirecta(ficha);
-    }
+    } // Si alguna de las formas se cumplen, gana() devuelve true
 
 
     protected boolean ganaHorizontal(Ficha ficha) {
@@ -68,6 +70,8 @@ public class Tablero {
 
         return false;
     }
+    // Por cada fila llama comprobarLinea(ficha, filaInicial, columnaInicial, desplazamientoFila, desplazamientoColumna)
+    // Los dos últimos números indican si ha habido un desplazamiento vertical u horizontal
 
 
     protected boolean ganaVertical(Ficha ficha) {
@@ -93,6 +97,7 @@ public class Tablero {
                 1
         );
     }
+    // Empieza en [0,0] y aumentan fila+1 y columna+1 hasta [2,2] en este caso
 
 
     protected boolean ganaDiagonalIndirecta(Ficha ficha) {
@@ -100,13 +105,14 @@ public class Tablero {
         return comprobarLinea(
                 ficha,
                 0,
-                tablero.length - 1,
+                tablero.length - 1, // Para coger el valor máx de columnas en el tablero, se coge el número de columnas y se le resta 1 porque el tablero comienza en 0
                 1,
                 -1
         );
     }
 
 
+    // En vez de repetir casi el mismo bucle cuatro veces, he creado un método que recorre una línea a partir de una posición inicial y una dirección
     private boolean comprobarLinea(
             Ficha ficha,
             int filaInicial,
@@ -138,29 +144,29 @@ public class Tablero {
 
         StringBuilder resultado = new StringBuilder();
 
-        resultado.append("   ");
+        resultado.append("   "); // Deja espacio para la numeración de filas
 
         for (int columna = 0; columna < tablero.length; columna++) {
             resultado.append(" ").append(columna).append("  ");
-        }
+        } // Hace que salgan el "0 1 2" sobre el tablero, con espacios intercalados para separar los números
 
         resultado.append("\n  +");
 
         for (int columna = 0; columna < tablero.length; columna++) {
             resultado.append("---+");
-        }
+        } //Genera los bordes del tablero
 
         resultado.append("\n");
 
-        for (int fila = 0; fila < tablero.length; fila++) {
+        for (int fila = 0; fila < tablero.length; fila++) { // Recorremos filas tablero
 
             resultado.append(fila).append(" |");
 
-            for (int columna = 0; columna < tablero[fila].length; columna++) {
+            for (int columna = 0; columna < tablero[fila].length; columna++) { // Recorremos cada casilla
 
                 resultado
                         .append(" ")
-                        .append(valueOf(tablero[fila][columna]))
+                        .append(valueOf(tablero[fila][columna])) // con esto "null" se transforma en " "
                         .append(" |");
             }
 

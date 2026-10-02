@@ -5,12 +5,12 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
-
         Partida partida = new Partida(3);
+        // Creamos teclado y partida con tablero 3x3
 
         while (!partida.terminada()) {
 
-            System.out.println(partida);
+            System.out.println(partida); // Llamando indirectamente a partida.toString()
 
             System.out.println("\nIntroduce la posición:");
 
@@ -28,7 +28,7 @@ public class Main {
     }
 
 
-    private static int leerNumero(Scanner teclado, String mensaje) {
+    private static int leerNumero(Scanner teclado, String mensaje) { //Asegurarse de que se mete un numero
 
         while (true) {
 
